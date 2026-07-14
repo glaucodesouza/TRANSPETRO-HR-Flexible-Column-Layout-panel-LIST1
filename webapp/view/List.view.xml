@@ -1,7 +1,104 @@
 <mvc:View controllerName="zhr.flexiblecolumnlayoutlist.controller.List"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <content />
-    </Page>
+    displayBlock="true"
+    width="100%"  
+    height="100%"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core">
+	<f:DynamicPage id="dynamicPageId"
+				   toggleHeaderOnTitleClick="false">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle id="_IDGenDynamicPageTitle1">
+				<f:heading>
+					<Title id="_IDGenTitle" text="Products"/>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+
+		<!-- DynamicPage Content -->
+		<f:content>
+        
+			<Table
+				id="productsTable"
+				mode="SingleSelectMaster"
+				itemPress=".onListItemPress"
+				inset="false"
+				items="{mdlOcorrenciasFiltradas>/}"
+				class="sapFDynamicPageAlignContent"
+				width="auto">
+				<headerToolbar>
+					<OverflowToolbar id="_IDGenOverflowToolbar">
+						<ToolbarSpacer id="_IDGenToolbarSpacer"/>
+						<SearchField id="_IDGenSearchField" search=".onSearch" width="17.5rem"/>
+						<OverflowToolbarButton id="_IDGenOverflowToolbarButton" icon="sap-icon://add" type="Transparent" press=".onAdd"/>
+						<OverflowToolbarButton id="_IDGenOverflowToolbarButton1" icon="sap-icon://sort" type="Transparent" press=".onSort"/>
+						<!-- COMBOBOX PERÍODO INI -->
+						<Text id="txtPeriodo" text="Período:"/>
+
+						<Select id="cmbPeriodos"
+							change="onComboBoxPeriodosChange"
+							items="{mdlPeriodos>/}"
+							width="300px">
+							
+							<items>
+								<core:Item id="cmbPeriodosItem" key="{key}" text="{text}"/>
+							</items>
+						</Select>
+						<!-- COMBOBOX PERÍODO FIM -->
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column id="_IDGenColumn" width="12em">
+						<Text id="_IDGenText" text="Empregado" />
+					</Column>
+					<Column id="_IDGenColumn1"	hAlign="End">
+						<Text id="_IDGenText1" text="HoraInicio" />
+					</Column>
+					<Column id="_IDGenColumn2"	hAlign="End">
+						<Text id="_IDGenText2" text="HoraFim" />
+					</Column>
+					<Column id="_IDGenColumn3"	hAlign="End">
+						<Text id="_IDGenText3" text="Justificativa" />
+					</Column>
+					<Column id="col00" width="90px">
+						<Text id="txtStatus0" text="Status"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem id="_IDGenColumnListItem" type="Navigation">
+						<cells>
+							<Text id="txtEmpregado" text="{mdlOcorrenciasFiltradas>Empregado}" /> 
+							<Input id="txtHoraInicio" value="{
+										path: 'mdlOcorrenciasFiltradas>HoraInicio',
+										formatter: '.formatter.formatTimeFromMs'
+									}" editable="{mdlOcorrenciasFiltradas>editMode}"/>
+
+							<Input id="txtHoraFim" value="{
+										path: 'mdlOcorrenciasFiltradas>HoraFim',
+										formatter: '.formatter.formatTimeFromMs'
+									}" editable="{mdlOcorrenciasFiltradas>editMode}"/>   
+							<Text id="txtJustificativa" text="{mdlOcorrenciasFiltradas>Justificativa}" /> 
+							<ObjectStatus
+								id="statusEmpregado"
+								text="{path: 'mdlOcorrenciasFiltradas>Status', formatter: '.formatter.statusText'}"
+								icon="{path: 'mdlOcorrenciasFiltradas>Status', formatter: '.formatter.statusIcon'}"
+								state="{path: 'mdlOcorrenciasFiltradas>Status', formatter: '.formatter.statusState'}" />
+
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</f:content>
+
+		<!-- DynamicPage Footer -->
+		<f:footer>
+			<OverflowToolbar id="_IDGenOverflowToolbar1">
+				<ToolbarSpacer id="_IDGenToolbarSpacer1"/>
+				<Button id="_IDGenButton" type="Accept" text="Accept"/>
+				<Button id="_IDGenButton1" type="Reject" text="Reject"/>
+			</OverflowToolbar>
+		</f:footer>
+	</f:DynamicPage>
 </mvc:View>
