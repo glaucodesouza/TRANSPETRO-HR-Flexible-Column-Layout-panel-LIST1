@@ -95,26 +95,32 @@
         "viewType": "XML",
         "async": true,
         "viewPath": "zhr.flexiblecolumnlayoutlist.view",
-        "controlAggregation": "pages",
-        "controlId": "app",
+        "controlAggregation": "beginColumnPages",
+        "controlId": "zhrflexiblecolumnlayoutlist",
         "clearControlAggregation": false
       },
       "routes": [
         {
-          "name": "RouteList",
-          "pattern": ":?query:",
-          "target": [
-            "TargetList"
-          ]
+          "pattern": "",
+          "name": "master",
+          "target": ["master"]
+        },
+        {
+          "pattern": "detail/{ocorrencia}/{layout}",
+          "name": "detail",
+          "target": ["master", "detail"]
         }
       ],
       "targets": {
-        "TargetList": {
+        "master": {
+          "viewName": "List",
           "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "List",
-          "viewName": "List"
+          "controlAggregation": "beginColumnPages"
+        },
+        "detail": {
+          "viewName": "Detail",
+          "viewType": "XML",
+          "controlAggregation": "midColumnPages"
         }
       }
     },
