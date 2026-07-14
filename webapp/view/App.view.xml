@@ -1,7 +1,12 @@
 <mvc:View controllerName="zhr.flexiblecolumnlayoutlist.controller.App"
     xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <App id="app">
-    </App>
+    displayBlock="true"
+    height="100%"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f">
+
+    <f:FlexibleColumnLayout
+        id="zhrflexiblecolumnlayoutlist"
+        layout="{layout>/layout}" />
+
 </mvc:View>
