@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZODATAHR_APONTA_OCORRENCIAS_SRV" xml:lang="pt" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Ocorrencias" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Empregado"/>
+                    <PropertyRef Name="Data"/>
+                    <PropertyRef Name="Contador"/>
+                </Key>
+                <Property Name="Empregado" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Empregado"/>
+                <Property Name="Data" Type="Edm.DateTime" Nullable="false" Precision="0" sap:unicode="false" sap:label="Data"/>
+                <Property Name="Contador" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="Contador"/>
+                <Property Name="HoraInicio" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="HoraInicio"/>
+                <Property Name="HoraFim" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="HoraFim"/>
+                <Property Name="Diferenca" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Diferenca"/>
+                <Property Name="TipoOcorrencia" Type="Edm.String" sap:unicode="false" sap:label="TipoOcorrencia"/>
+                <Property Name="OcorInfotipo" Type="Edm.String" sap:unicode="false" sap:label="OcorInfotipo"/>
+                <Property Name="OcorSubTipo" Type="Edm.String" sap:unicode="false" sap:label="OcorSubTipo"/>
+                <Property Name="Justificativa" Type="Edm.String" sap:unicode="false" sap:label="Justificativa"/>
+                <Property Name="Observacao" Type="Edm.String" sap:unicode="false" sap:label="Observacao"/>
+                <Property Name="Status" Type="Edm.String" sap:unicode="false" sap:label="Status"/>
+                <Property Name="ChaveSap" Type="Edm.String" sap:unicode="false" sap:label="ChaveSap"/>
+                <Property Name="NomeEmpregado" Type="Edm.String" sap:unicode="false" sap:label="NomeEmpregado"/>
+                <Property Name="Periodo" Type="Edm.String" sap:unicode="false" sap:label="Periodo"/>
+                <Property Name="AnexoNome" Type="Edm.String" sap:unicode="false" sap:label="AnexoNome"/>
+                <Property Name="AnexoConteudo" Type="Edm.String" sap:unicode="false" sap:label="AnexoConteudo"/>
+                <Property Name="DescricaoTipoOcorr" Type="Edm.String" sap:unicode="false" sap:label="DescricaoTipoOcorr"/>
+                <Property Name="InicioJornada" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="InicioJornada" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FimJornada" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="FimJornada" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InicioIntervalo" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="InicioIntervalo" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FimIntervalo" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="FimIntervalo" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DataCorte" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="DataCorte" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="UnidadeOrganizacional" Type="Edm.String" sap:unicode="false" sap:label="UnidadeOrganizacional" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="UnidOrgDescricao" Type="Edm.String" sap:unicode="false" sap:label="UnidOrgDescricao" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="Periodos" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Periodo"/>
+                </Key>
+                <Property Name="Periodo" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Periodo"/>
+                <Property Name="Ocorrencias" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="Ocorrencias"/>
+            </EntityType>
+            <EntityType Name="Perfis" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Perfil"/>
+                </Key>
+                <Property Name="Perfil" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Perfil" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="CodigosFrequencia" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Codigo"/>
+                    <PropertyRef Name="Infotipo"/>
+                    <PropertyRef Name="Subtipo"/>
+                </Key>
+                <Property Name="Codigo" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Codigo" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Infotipo" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Infotipo" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Subtipo" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Subtipo" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Descricao" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Descricao" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CodigoDescricao" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="CodigoDescricao" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Entrada" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Entrada" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Saida" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Saida" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Anexo" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Anexo" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="CalendarioDeStatus" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Data"/>
+                </Key>
+                <Property Name="Data" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Data"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Status"/>
+                <Property Name="Quantidade" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="Quantidade"/>
+            </EntityType>
+            <EntityType Name="OcorrenciasAnexo" m:HasStream="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Empregado"/>
+                    <PropertyRef Name="Data"/>
+                    <PropertyRef Name="Contador"/>
+                </Key>
+                <Property Name="Empregado" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Empregado"/>
+                <Property Name="Data" Type="Edm.DateTime" Nullable="false" Precision="0" sap:unicode="false" sap:label="Data"/>
+                <Property Name="Contador" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="Contador"/>
+                <Property Name="NomeArquivo" Type="Edm.String" sap:unicode="false" sap:label="nome_arquivo"/>
+                <Property Name="Mimetype" Type="Edm.String" sap:unicode="false" sap:label="mimetype"/>
+                <Property Name="Obsoleto" Type="Edm.String" sap:unicode="false" sap:label="obsoleto" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Config" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Apontador"/>
+                </Key>
+                <Property Name="Apontador" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Apontador" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="Empregados" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Empregado"/>
+                </Key>
+                <Property Name="Empregado" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Empregado" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Nome" Type="Edm.String" sap:unicode="false" sap:label="Nome" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZODATAHR_APONTA_OCORRENCIAS_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="OcorrenciasSet" EntityType="ZODATAHR_APONTA_OCORRENCIAS_SRV.Ocorrencias" sap:label="OcorrenciasSet" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="PeriodosSet" EntityType="ZODATAHR_APONTA_OCORRENCIAS_SRV.Periodos" sap:label="PeriodosSet" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="PerfisSet" EntityType="ZODATAHR_APONTA_OCORRENCIAS_SRV.Perfis" sap:label="PerfisSet" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="CodigosFrequenciaSet" EntityType="ZODATAHR_APONTA_OCORRENCIAS_SRV.CodigosFrequencia" sap:label="CodigosFrequenciaSet" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="CalendarioDeStatusSet" EntityType="ZODATAHR_APONTA_OCORRENCIAS_SRV.CalendarioDeStatus" sap:label="CalendarioDeStatusSet" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="OcorrenciasAnexoSet" EntityType="ZODATAHR_APONTA_OCORRENCIAS_SRV.OcorrenciasAnexo" sap:label="OcorrenciasAnexoSet" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ConfigSet" EntityType="ZODATAHR_APONTA_OCORRENCIAS_SRV.Config" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="EmpregadosSet" EntityType="ZODATAHR_APONTA_OCORRENCIAS_SRV.Empregados" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <FunctionImport Name="CancelarOcorrencia" ReturnType="ZODATAHR_APONTA_OCORRENCIAS_SRV.Ocorrencias" EntitySet="OcorrenciasSet" m:HttpMethod="POST" sap:action-for="ZODATAHR_APONTA_OCORRENCIAS_SRV.Ocorrencias">
+                    <Parameter Name="Empregado" Type="Edm.String" Mode="In" sap:label="Empregado"/>
+                    <Parameter Name="Data" Type="Edm.DateTime" Mode="In" Precision="0" sap:label="Data"/>
+                    <Parameter Name="Obsoleto" Type="Edm.String" Mode="In" sap:label="Obsoleto"/>
+                    <Parameter Name="Contador" Type="Edm.Int32" Mode="In" sap:label="Contador"/>
+                </FunctionImport>
+            </EntityContainer>
+            <atom:link rel="self" href="https://stp01sap0013.transp.biz:8400/sap/opu/odata/sap/ZODATAHR_APONTA_OCORRENCIAS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://stp01sap0013.transp.biz:8400/sap/opu/odata/sap/ZODATAHR_APONTA_OCORRENCIAS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
