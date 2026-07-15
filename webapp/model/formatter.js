@@ -33,7 +33,7 @@ sap.ui.define([
             
             // Caso receba do botão Criar Registro
             if (!horaDoSAP.ms) {
-                return horaDoSAP; // Retorna o valor original se não for um objeto com a propriedade "ms"
+                return "00:00"; // Retorna o valor original se não for um objeto com a propriedade "ms"
             }
             
             //Caso receba indefinido

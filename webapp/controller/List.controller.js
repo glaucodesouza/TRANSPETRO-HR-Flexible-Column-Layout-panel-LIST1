@@ -1,3 +1,4 @@
+
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/Filter",
@@ -5,12 +6,28 @@ sap.ui.define([
     "sap/ui/model/Sorter",
     "sap/m/MessageBox",
     "sap/f/library",
-
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageToast",
     "zhr/flexiblecolumnlayoutlist/model/formatter",
-
-], function (Controller, Filter, FilterOperator, Sorter, MessageBox, fioriLibrary, JSONModel, MessageToast, formatter) {
+    "sap/ui/core/Fragment",
+    "sap/ui/unified/CalendarLegendItem",
+    "sap/ui/unified/DateTypeRange",
+    "sap/m/MenuItem"
+], function (
+    Controller,
+    Filter,
+    FilterOperator,
+    Sorter,
+    MessageBox,
+    fioriLibrary,
+    JSONModel,
+    MessageToast,
+    formatter,
+    Fragment,
+    CalendarLegendItem,
+    DateTypeRange,
+    MenuItem
+) {
     "use strict";
 
     var aPeriodosDoSAP;
@@ -466,11 +483,28 @@ sap.ui.define([
 
         },
 
+        onListItemPress: function (oEvent) {
+            let oItem = oEvent.getSource();
+            let oContext = oItem.getBindingContext("mdlOcorrenciasFiltradas");
+
+            if (!oContext) {
+                MessageToast.show("Não foi possível identificar a ocorrência.");
+                return;
+            }
+
+            let oOcorrencia = oContext.getObject();
+
+            this.preencherTimeLineTela(oEvent);
+
+            MessageToast.show(
+                `Ocorrência selecionada: ${oOcorrencia.Empregado} - ${oOcorrencia.NomeEmpregado}`
+            );
+        },
+
         //TIMELINE INI ----------------------------------------------------------
         preencherTimeLineTela: function(oEvent) {
 
             let aTimelineHours = [];
-            let EmpregadoEncontrado = '';
 
             //--------------------------------------------------------------------------
             // Preencher TIMELINE ao clicar na linha da Table
@@ -508,12 +542,11 @@ sap.ui.define([
                 //TIMELINE FIM vazio
             }
 
-            try {
-                this.byId("timelineHtml").setVisible(true);
-            } catch (error) {
-                
-            }
+            let oTimelineHtml = this.byId("timelineHtml");
 
+            if (oTimelineHtml) {
+                oTimelineHtml.setVisible(true);
+            }
         },
 
         _buildTimeline: function (times) {
