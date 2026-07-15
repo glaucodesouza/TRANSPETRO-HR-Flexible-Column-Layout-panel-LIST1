@@ -147,93 +147,53 @@
 									text="{mdlOcorrenciasFiltradas>UnidadeOrganizacional} - {mdlOcorrenciasFiltradas>UnidOrgDescricao}" />
 							</VBox>
 
-							<ObjectStatus id="_IDGenObjectStatus"
-								text="{
-									path: 'mdlOcorrenciasFiltradas>Status',
-									formatter: '.formatter.statusText'
-								}"
-								icon="{
-									path: 'mdlOcorrenciasFiltradas>Status',
-									formatter: '.formatter.statusIcon'
-								}"
-								state="{
-									path: 'mdlOcorrenciasFiltradas>Status',
-									formatter: '.formatter.statusState'
-								}" />
+							<VBox id="_IDGenVBox20" class="sapUiSmallMarginEnd">
+								<Label id="_IDGenLabel20" text="Status" />
+								<ObjectStatus id="_IDGenObjectStatus"
+									text="{
+										path: 'mdlOcorrenciasFiltradas>Status',
+										formatter: '.formatter.statusText'
+									}"
+									icon="{
+										path: 'mdlOcorrenciasFiltradas>Status',
+										formatter: '.formatter.statusIcon'
+									}"
+									state="{
+										path: 'mdlOcorrenciasFiltradas>Status',
+										formatter: '.formatter.statusState'
+									}" />
+							</VBox>
+
 							<VBox id="_IDGenVBox6" class="sapUiSmallMarginEnd">
 								<Label id="_IDGenLabel6" text="Data" />
 								<Text id="_IDGenText1"
 									text="{
 										path: 'mdlOcorrenciasFiltradas>Data',
 										formatter: '.formatter.formatDateBR'
-									}" />
+									}" 
+									width="5rem"/>
 							</VBox>
 
 							<VBox id="_IDGenVBox7" class="sapUiSmallMarginEnd">
 								<Label id="_IDGenLabel7" text="Início" />
-								<Input id="_IDGenInput"
-									width="6rem"
-									value="{
-										path: 'mdlOcorrenciasFiltradas>HoraInicio',
-										formatter: '.formatter.formatTimeFromMs'
-									}"
-									editable="{mdlOcorrenciasFiltradas>editModeHoraInicio}" />
-							</VBox>
-
-							<VBox id="_IDGenVBox8" class="sapUiSmallMarginEnd">
-								<Label id="_IDGenLabel8" text="Fim" />
-								<Input id="_IDGenInput1"
-									width="6rem"
-									value="{
-										path: 'mdlOcorrenciasFiltradas>HoraFim',
-										formatter: '.formatter.formatTimeFromMs'
-									}"
-									editable="{mdlOcorrenciasFiltradas>editModeHoraFim}" />
-							</VBox>
-
-							<VBox id="_IDGenVBox9" class="sapUiSmallMarginEnd">
-								<Label id="_IDGenLabel9" text="Diferença" />
-								<Text id="_IDGenText2"
-									text="{mdlOcorrenciasFiltradas>Diferenca}"
-									textAlign="Right" />
-							</VBox>
-						</HBox>
-
-						<!-- Linha 2: data e horários -->
-						<HBox id="_IDGenHBox1"
-							class="sapUiSmallMarginTop"
-							alignItems="Center"
-							wrap="Wrap">
-
-							<!-- <VBox id="_IDGenVBox6" class="sapUiSmallMarginEnd">
-								<Label id="_IDGenLabel6" text="Data" />
-								<Text id="_IDGenText1"
+								<Text id="_IDGenInput"
+									width="3rem"
 									text="{
-										path: 'mdlOcorrenciasFiltradas>Data',
-										formatter: '.formatter.formatDateBR'
-									}" />
-							</VBox>
-
-							<VBox id="_IDGenVBox7" class="sapUiSmallMarginEnd">
-								<Label id="_IDGenLabel7" text="Início" />
-								<Input id="_IDGenInput"
-									width="6rem"
-									value="{
 										path: 'mdlOcorrenciasFiltradas>HoraInicio',
 										formatter: '.formatter.formatTimeFromMs'
 									}"
-									editable="{mdlOcorrenciasFiltradas>editModeHoraInicio}" />
+									/>
 							</VBox>
 
 							<VBox id="_IDGenVBox8" class="sapUiSmallMarginEnd">
 								<Label id="_IDGenLabel8" text="Fim" />
-								<Input id="_IDGenInput1"
-									width="6rem"
-									value="{
+								<Text id="_IDGenInput1"
+									width="3rem"
+									text="{
 										path: 'mdlOcorrenciasFiltradas>HoraFim',
 										formatter: '.formatter.formatTimeFromMs'
 									}"
-									editable="{mdlOcorrenciasFiltradas>editModeHoraFim}" />
+									/>
 							</VBox>
 
 							<VBox id="_IDGenVBox9" class="sapUiSmallMarginEnd">
@@ -241,51 +201,64 @@
 								<Text id="_IDGenText2"
 									text="{mdlOcorrenciasFiltradas>Diferenca}"
 									textAlign="Right" />
-							</VBox> -->
-
-						</HBox>
-
-						<!-- Linha 3: ocorrência e justificativa -->
-						<HBox id="_IDGenHBox2"
-							class="sapUiSmallMarginTop"
-							alignItems="Center"
-							wrap="Wrap">
+							</VBox>
 
 							<VBox id="_IDGenVBox10" class="sapUiSmallMarginEnd">
 								<Label id="_IDGenLabel10" text="Tipo de Ocorrência" />
-								<Input id="_IDGenInput2"
+								<Text id="_IDGenInput2"
 									width="9rem"
-									value="{mdlOcorrenciasFiltradas>TipoOcorrencia}"
-									editable="{mdlOcorrenciasFiltradas>editModeTipoOcorrencia}"
-									showValueHelp="true"
-									valueHelpOnly="true"
-									valueHelpRequest=".onValueHelpRequestTipoOcorrencia" />
+									text="{mdlOcorrenciasFiltradas>TipoOcorrencia}"
+									/>
 							</VBox>
 
 							<VBox id="_IDGenVBox11" class="sapUiSmallMarginEnd">
 								<Label id="_IDGenLabel11" text="Justificativa" />
-								<Input id="_IDGenInput3"
+								<Text id="_IDGenInput3"
 									width="18rem"
-									value="{mdlOcorrenciasFiltradas>JustificativaTexto}"
-									showValueHelp="true"
-									valueHelpOnly="true"
-									valueHelpRequest=".onValueHelpRequestCodigoFrequencia"
-									editable="{mdlOcorrenciasFiltradas>editMode}" />
+									text="{mdlOcorrenciasFiltradas>JustificativaTexto}"
+									/>
+
 							</VBox>
 
+							<VBox id="_IDGenVBox12" class="sapUiSmallMarginTop">
+								<Label id="_IDGenLabel12" text="Observação" />
+								<Text id="_IDGenInput4"
+									text="{mdlOcorrenciasFiltradas>Observacao}"
+									width="100%" />
+							</VBox>
+
+							<VBox id="_IDGenVBox3" class="sapUiSmallMarginEnd">
+								<Button id="_IDGenButton13" 
+									icon="sap-icon://accept"
+									type="Transparent"
+									tooltip="Salvar"
+									press=".onSalvarLinha" />
+
+								<Button id="_IDGenButton14" 
+									icon="sap-icon://decline"
+									type="Transparent"
+									tooltip="Cancelar"
+									press=".onCancelarLinha" />
+
+								<Button id="_IDGenButton9"
+									icon="sap-icon://attachment"
+									type="Transparent"
+									tooltip="Anexar"
+									press=".onAbrirFragmentTelaAnexo" />
+							</VBox>
 						</HBox>
 
-						<!-- Linha 4: observação -->
+
+
+						<!-- Linha 4: observação
 						<VBox id="_IDGenVBox12" class="sapUiSmallMarginTop">
 							<Label id="_IDGenLabel12" text="Observação" />
-							<Input id="_IDGenInput4"
-								value="{mdlOcorrenciasFiltradas>Observacao}"
-								editable="{mdlOcorrenciasFiltradas>editMode}"
-								maxLength="72"
+							<Text id="_IDGenInput4"
+								text="{mdlOcorrenciasFiltradas>Observacao}"
 								width="100%" />
-						</VBox>
+						</VBox> -->
 
-						<!-- Linha 5: ações da linha -->
+						<!-- Linha 5: ações da linha
 						<OverflowToolbar id="_IDGenOverflowToolbar"
 							class="sapUiTinyMarginTop"
 							design="Transparent">
@@ -310,7 +283,7 @@
 								tooltip="Anexar"
 								press=".onAbrirFragmentTelaAnexo" />
 
-						</OverflowToolbar>
+						</OverflowToolbar> -->
 
 					</VBox>
 
