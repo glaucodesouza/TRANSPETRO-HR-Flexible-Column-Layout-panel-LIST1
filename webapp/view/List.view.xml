@@ -28,28 +28,81 @@
                         alignItems="Center"
                         class="sapUiSmallMargin">
 
-                        <Label
-                            id="lblPeriodo"
-                            text="Período:"
-                            labelFor="cmbPeriodos"
-                            class="sapUiTinyMarginEnd"/>
+						<VBox id="_IDGenVBox13" class="sapUiSmallMarginEnd">
+							<Label id="_IDGenLabel13" text="Período" labelFor="cmbPeriodos"/>
+							<Select
+								id="cmbPeriodos"
+								width="300px"
+								change=".onComboBoxPeriodosChange"
+								items="{mdlPeriodos>/}">
+								<core:Item id="_IDGenItem1"
+									key="{mdlPeriodos>Periodo}"
+									text="{mdlPeriodos>PeriodoTexto}" />
+							</Select>
+						</VBox>
 
-                        <Select
-                            id="cmbPeriodos"
-                            width="300px"
-                            change=".onComboBoxPeriodosChange"
-                            items="{mdlPeriodos>/}">
-                            <core:Item id="_IDGenItem"
-                                key="{mdlPeriodos>Periodo}"
-                                text="{mdlPeriodos>PeriodoTexto}"/>
-                        </Select>
+						<VBox id="_IDGenVBox14" class="sapUiSmallMarginEnd" visible="{mdlAppConfig>/filters/visibleEmpregado}">
+							<Label id="_IDGenLabel14" text="Empregado" labelFor="inputEmpregado"/>
+							<Input
+								id="inputEmpregado"
+								width="10rem"
+								maxLength="10"
+								showValueHelp="true"
+								valueHelpRequest=".onValueHelpRequestEmpregado"
+								submit=".onPesquisar"/>
+						</VBox>
+
+						<VBox id="_IDGenVBox15" class="sapUiSmallMarginEnd">
+							<Label id="_IDGenLabel15" text="Tipo de Ocorrência" labelFor="inputTipoOcorrencia"/>
+							<Input
+								id="inputTipoOcorrencia"
+								width="10rem"
+								showValueHelp="true"
+								valueHelpRequest=".onValueHelpRequestTipoOcorrencia"
+								submit=".onPesquisar"/>
+						</VBox>
+
+						<VBox id="_IDGenVBox16" class="sapUiSmallMarginEnd">
+							<Label id="_IDGenLabel16" text="Status" labelFor="inputStatus"/>
+							<Input
+								id="inputStatus"
+								width="10rem"
+								showValueHelp="true"
+								valueHelpRequest=".onValueHelpRequestStatus"
+								submit=".onPesquisar"/>
+						</VBox>
+
+						<VBox id="_IDGenVBox17" class="sapUiSmallMarginEnd" visible="{mdlAppConfig>/filters/visibleEmpregado}">
+							<Label id="_IDGenLabel17" text="Gerência" labelFor="inputGerencia"/>
+							<Input
+								id="inputGerencia"
+								width="10rem"
+								showValueHelp="true"
+								valueHelpRequest=".onValueHelpRequestGerencia"
+								submit=".onPesquisar"/>
+						</VBox>
+
+						<VBox id="_IDGenVBox18" class="sapUiSmallMarginEnd">
+							<Label id="_IDGenLabel18" text=" "/>
+							<Button id="_IDGenButton10"
+								text="Pesquisar"
+								type="Emphasized"
+								press=".onPesquisar"/>
+						</VBox>
+
+						<VBox id="_IDGenVBox19" class="sapUiSmallMarginEnd">
+							<Label id="_IDGenLabel19" text=" "/>
+							<Button id="_IDGenButton11"
+								text="Limpar Filtros"
+								type="Default"
+								press=".onLimparFiltros"/>
+						</VBox>
 
                     </HBox>
 
                 </f:content>
             </f:DynamicPageHeader>
         </f:header>
-
 
 		<!-- DynamicPage Content -->
 		<f:content>

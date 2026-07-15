@@ -897,72 +897,39 @@ sap.ui.define([
             } catch (error) {
                 MessageToast.show("Erro ao aplicar filtros na lista.");
             }
+        },
 
-            // try {
-            //     // pega a tabela interna da SmartTable
-            //     let oSmartTable = this.byId("smartTable");
-            //     let oTable = oSmartTable.getTable();
-            //     // pega binding das linhas (depende do tipo de tabela)
-            //     let oBinding = oTable.getBinding("items"); // ResponsiveTable
+        onLimparFiltros: function () {
+            let oInputEmpregado = this.byId("inputEmpregado");
+            let oInputTipoOcorrencia = this.byId("inputTipoOcorrencia");
+            let oInputStatus = this.byId("inputStatus");
+            let oInputGerencia = this.byId("inputGerencia");
 
-            //     // array de filtros            
-            //     let aFilters = [];
+            if (oInputEmpregado) {
+                oInputEmpregado.setValue("");
+            }
 
-            //     //Empregado
-            //     let sValueFilterEmpregado = this.byId("inputEmpregado").getValue(); // pega valor do SearchField
+            if (oInputTipoOcorrencia) {
+                oInputTipoOcorrencia.setValue("");
+            }
 
-            //     if (sValueFilterEmpregado && !oAppConfig.buttons.visibleMinhasOcorrencias) {
-            //         let oFilterEmpregado = new sap.ui.model.Filter(
-            //             "Empregado", // nome do campo no JSON
-            //             sap.ui.model.FilterOperator.Contains,
-            //             sValueFilterEmpregado
-            //         );
-            //         aFilters.push(oFilterEmpregado);
-            //     }
+            if (oInputStatus) {
+                oInputStatus.setValue("");
+            }
 
-            //     //Tipo Ocorrência
-            //     let sValueFilterTipoOcorrencia = this.byId("inputTipoOcorrencia").getValue(); // pega valor do SearchField
+            if (oInputGerencia) {
+                oInputGerencia.setValue("");
+            }
 
-            //     if (sValueFilterTipoOcorrencia) {
-            //         let oFilterTipoOcorrencia = new sap.ui.model.Filter(
-            //             "TipoOcorrencia", // nome do campo no JSON
-            //             sap.ui.model.FilterOperator.Contains,
-            //             sValueFilterTipoOcorrencia
-            //         );
-            //         aFilters.push(oFilterTipoOcorrencia);
-            //     }
+            let oList = this.byId("listOcorrencias");
 
-            //     // Status
-            //     let sValueFilterStatus = this.byId("inputStatus").getValue(); // pega valor do SearchField
+            if (oList) {
+                let oBinding = oList.getBinding("items");
 
-            //     if (sValueFilterStatus) {
-            //         let oFilterStatus = new sap.ui.model.Filter(
-            //             "Status", // nome do campo no JSON
-            //             sap.ui.model.FilterOperator.Contains,
-            //             sValueFilterStatus
-            //         );
-            //         aFilters.push(oFilterStatus);
-            //     }
-
-            //     // UnidadeOrganizacional
-            //     let sValueFilterUnidadeOrganizacional = this.byId("inputGerencia").getValue(); // pega valor do SearchField
-
-            //     if (sValueFilterUnidadeOrganizacional) {
-            //         let oFilterUnidadeOrganizacional = new sap.ui.model.Filter(
-            //             "UnidadeOrganizacional", // nome do campo no JSON
-            //             sap.ui.model.FilterOperator.Contains,
-            //             sValueFilterUnidadeOrganizacional
-            //         );
-            //         aFilters.push(oFilterUnidadeOrganizacional);
-            //     }
-
-            //     // aplica filtro
-            //     oBinding.filter(aFilters);
-
-            // } catch (error) {
-                
-            // }
-
+                if (oBinding) {
+                    oBinding.filter([]);
+                }
+            }
         },
 
         onSalvarEmMassa: function () {
@@ -2367,6 +2334,8 @@ sap.ui.define([
 
                     this.byId(sIdCampoClicado).setValue(sCodigoSelecionado);
 
+                    this.onPesquisar();
+
                 }.bind(this)
 
             });
@@ -2463,6 +2432,8 @@ sap.ui.define([
                     this.byId(sIdCampoClicado).setValue(sCodigoSelecionado);
 
                     oModelOcorrenciasFiltradas.refresh(true);
+
+                    this.onPesquisar();
 
                 }.bind(this)
             });
@@ -2663,6 +2634,8 @@ sap.ui.define([
                     );
 
                     oModelOcorrenciasFiltradas.refresh(true);
+
+                    this.onPesquisar();
                 }.bind(this)
             });
 
@@ -2766,6 +2739,8 @@ sap.ui.define([
 
                     this.byId("inputStatus").setValue(sCodigoSelecionado);
 
+                    this.onPesquisar();
+
                 }.bind(this)
 
             });
@@ -2856,6 +2831,8 @@ sap.ui.define([
                     let sCodigoSelecionado = oCtx.getProperty("UnidadeOrganizacional");
 
                     this.byId(sIdCampoMatchcodeClicado).setValue(sCodigoSelecionado);
+
+                    this.onPesquisar();
 
                 }.bind(this)
 
