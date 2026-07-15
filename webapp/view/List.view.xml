@@ -1,323 +1,464 @@
-<mvc:View controllerName="zhr.flexiblecolumnlayoutlist.controller.List"
+<mvc:View
+    controllerName="zhr.flexiblecolumnlayoutlist.controller.List"
     displayBlock="true"
-    width="100%"  
+    width="100%"
     height="100%"
     xmlns="sap.m"
     xmlns:f="sap.f"
     xmlns:mvc="sap.ui.core.mvc"
-	xmlns:core="sap.ui.core">
-	<f:DynamicPage id="dynamicPageId"
-				   toggleHeaderOnTitleClick="false">
-		<!-- DynamicPage Title -->
-		<f:title>
-			<f:DynamicPageTitle id="_IDGenDynamicPageTitle1">
-				<f:heading>
-					<Title id="_IDGenTitle" text="Apontamentos"/>
-				</f:heading>
-			</f:DynamicPageTitle>
-		</f:title>
-
+    xmlns:core="sap.ui.core"
+>
+    <f:DynamicPage
+        id="dynamicPageId"
+        toggleHeaderOnTitleClick="false"
+    >
+        <!-- DynamicPage Title -->
+        <f:title>
+            <f:DynamicPageTitle id="_IDGenDynamicPageTitle1">
+                <f:heading>
+                    <Title
+                        id="_IDGenTitle"
+                        text="Apontamentos"
+                    />
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
 
         <!-- Header com seleção de período -->
         <f:header>
             <f:DynamicPageHeader id="dynamicPageHeader">
                 <f:content>
-
                     <HBox
                         id="boxFiltrosPeriodo"
                         alignItems="Center"
-                        class="sapUiSmallMargin">
+                        class="sapUiSmallMargin"
+                    >
+                        <VBox
+                            id="_IDGenVBox13"
+                            class="sapUiSmallMarginEnd"
+                        >
+                            <Label
+                                id="_IDGenLabel13"
+                                text="Período"
+                                labelFor="cmbPeriodos"
+                            />
+                            <Select
+                                id="cmbPeriodos"
+                                width="300px"
+                                change=".onComboBoxPeriodosChange"
+                                items="{mdlPeriodos>/}"
+                            >
+                                <core:Item
+                                    id="_IDGenItem1"
+                                    key="{mdlPeriodos>Periodo}"
+                                    text="{mdlPeriodos>PeriodoTexto}"
+                                />
+                            </Select>
+                        </VBox>
 
-						<VBox id="_IDGenVBox13" class="sapUiSmallMarginEnd">
-							<Label id="_IDGenLabel13" text="Período" labelFor="cmbPeriodos"/>
-							<Select
-								id="cmbPeriodos"
-								width="300px"
-								change=".onComboBoxPeriodosChange"
-								items="{mdlPeriodos>/}">
-								<core:Item id="_IDGenItem1"
-									key="{mdlPeriodos>Periodo}"
-									text="{mdlPeriodos>PeriodoTexto}" />
-							</Select>
-						</VBox>
+                        <VBox
+                            id="_IDGenVBox14"
+                            class="sapUiSmallMarginEnd"
+                            visible="{mdlAppConfig>/filters/visibleEmpregado}"
+                        >
+                            <Label
+                                id="_IDGenLabel14"
+                                text="Empregado"
+                                labelFor="inputEmpregado"
+                            />
+                            <Input
+                                id="inputEmpregado"
+                                width="10rem"
+                                maxLength="10"
+                                showValueHelp="true"
+                                valueHelpRequest=".onValueHelpRequestEmpregado"
+                                submit=".onPesquisar"
+                            />
+                        </VBox>
 
-						<VBox id="_IDGenVBox14" class="sapUiSmallMarginEnd" visible="{mdlAppConfig>/filters/visibleEmpregado}">
-							<Label id="_IDGenLabel14" text="Empregado" labelFor="inputEmpregado"/>
-							<Input
-								id="inputEmpregado"
-								width="10rem"
-								maxLength="10"
-								showValueHelp="true"
-								valueHelpRequest=".onValueHelpRequestEmpregado"
-								submit=".onPesquisar"/>
-						</VBox>
+                        <VBox
+                            id="_IDGenVBox15"
+                            class="sapUiSmallMarginEnd"
+                        >
+                            <Label
+                                id="_IDGenLabel15"
+                                text="Tipo de Ocorrência"
+                                labelFor="inputTipoOcorrencia"
+                            />
+                            <Input
+                                id="inputTipoOcorrencia"
+                                width="10rem"
+                                showValueHelp="true"
+                                valueHelpRequest=".onValueHelpRequestTipoOcorrencia"
+                                submit=".onPesquisar"
+                            />
+                        </VBox>
 
-						<VBox id="_IDGenVBox15" class="sapUiSmallMarginEnd">
-							<Label id="_IDGenLabel15" text="Tipo de Ocorrência" labelFor="inputTipoOcorrencia"/>
-							<Input
-								id="inputTipoOcorrencia"
-								width="10rem"
-								showValueHelp="true"
-								valueHelpRequest=".onValueHelpRequestTipoOcorrencia"
-								submit=".onPesquisar"/>
-						</VBox>
+                        <VBox
+                            id="_IDGenVBox16"
+                            class="sapUiSmallMarginEnd"
+                        >
+                            <Label
+                                id="_IDGenLabel16"
+                                text="Status"
+                                labelFor="inputStatus"
+                            />
+                            <Input
+                                id="inputStatus"
+                                width="10rem"
+                                showValueHelp="true"
+                                valueHelpRequest=".onValueHelpRequestStatus"
+                                submit=".onPesquisar"
+                            />
+                        </VBox>
 
-						<VBox id="_IDGenVBox16" class="sapUiSmallMarginEnd">
-							<Label id="_IDGenLabel16" text="Status" labelFor="inputStatus"/>
-							<Input
-								id="inputStatus"
-								width="10rem"
-								showValueHelp="true"
-								valueHelpRequest=".onValueHelpRequestStatus"
-								submit=".onPesquisar"/>
-						</VBox>
+                        <VBox
+                            id="_IDGenVBox17"
+                            class="sapUiSmallMarginEnd"
+                            visible="{mdlAppConfig>/filters/visibleEmpregado}"
+                        >
+                            <Label
+                                id="_IDGenLabel17"
+                                text="Gerência"
+                                labelFor="inputGerencia"
+                            />
+                            <Input
+                                id="inputGerencia"
+                                width="10rem"
+                                showValueHelp="true"
+                                valueHelpRequest=".onValueHelpRequestGerencia"
+                                submit=".onPesquisar"
+                            />
+                        </VBox>
 
-						<VBox id="_IDGenVBox17" class="sapUiSmallMarginEnd" visible="{mdlAppConfig>/filters/visibleEmpregado}">
-							<Label id="_IDGenLabel17" text="Gerência" labelFor="inputGerencia"/>
-							<Input
-								id="inputGerencia"
-								width="10rem"
-								showValueHelp="true"
-								valueHelpRequest=".onValueHelpRequestGerencia"
-								submit=".onPesquisar"/>
-						</VBox>
+                        <VBox
+                            id="_IDGenVBox18"
+                            class="sapUiSmallMarginEnd"
+                        >
+                            <Label
+                                id="_IDGenLabel18"
+                                text=" "
+                            />
+                            <Button
+                                id="_IDGenButton10"
+                                text="Pesquisar"
+                                type="Emphasized"
+                                press=".onPesquisar"
+                            />
+                        </VBox>
 
-						<VBox id="_IDGenVBox18" class="sapUiSmallMarginEnd">
-							<Label id="_IDGenLabel18" text=" "/>
-							<Button id="_IDGenButton10"
-								text="Pesquisar"
-								type="Emphasized"
-								press=".onPesquisar"/>
-						</VBox>
-
-						<VBox id="_IDGenVBox19" class="sapUiSmallMarginEnd">
-							<Label id="_IDGenLabel19" text=" "/>
-							<Button id="_IDGenButton11"
-								text="Limpar Filtros"
-								type="Default"
-								press=".onLimparFiltros"/>
-						</VBox>
-
+                        <VBox
+                            id="_IDGenVBox19"
+                            class="sapUiSmallMarginEnd"
+                        >
+                            <Label
+                                id="_IDGenLabel19"
+                                text=" "
+                            />
+                            <Button
+                                id="_IDGenButton11"
+                                text="Limpar Filtros"
+                                type="Default"
+                                press=".onLimparFiltros"
+                            />
+                        </VBox>
                     </HBox>
-
                 </f:content>
             </f:DynamicPageHeader>
         </f:header>
 
-		<!-- DynamicPage Content -->
-		<f:content>
-
-
-			<List
-				id="listOcorrencias"
-				mode="MultiSelect"
-				growing="true"
-				growingThreshold="10"
-				busyIndicatorDelay="200"
-				enableBusyIndicator="true"
-				noDataText="Nenhuma ocorrência disponível"
-				items="{
+        <!-- DynamicPage Content -->
+        <f:content>
+            <List
+                id="listOcorrencias"
+                mode="MultiSelect"
+                growing="true"
+                growingThreshold="10"
+                busyIndicatorDelay="200"
+                enableBusyIndicator="true"
+                noDataText="Nenhuma ocorrência disponível"
+                items="{
 					path: 'mdlOcorrenciasFiltradas>/',
 					sorter: {
 						path: 'UnidadeOrganizacional',
 						descending: false,
 						group: '.listGroupFunction'
 					}
-				}">
+				}"
+            >
+                <CustomListItem
+                    id="itemOcorrencia"
+                    type="Active"
+                    press=".onListItemPress"
+                >
+                    <VBox
+                        id="_IDGenVBox4"
+                        class="sapUiSmallMarginTop sapUiSmallMarginBottom sapUiSmallMarginBeginEnd"
+                    >
+                        <HBox
+                            id="boxLinhaOcorrencia"
+                            width="100%"
+                            wrap="NoWrap"
+                            alignItems="Start"
+                            justifyContent="Start"
+                        >
+                            <!-- Área dos dados: esta parte pode quebrar linha -->
+                            <HBox
+                                id="boxDadosOcorrencia"
+                                wrap="Wrap"
+                                alignItems="Start"
+                                alignContent="Start"
+                                justifyContent="Start"
+                            >
+                                <layoutData>
+                                    <FlexItemData
+                                        id="_IDGenFlexItemData1"
+                                        growFactor="1"
+                                        shrinkFactor="1"
+                                        baseSize="0"
+                                        minWidth="0"
+                                    />
+                                </layoutData>
 
-				<CustomListItem
-					id="itemOcorrencia"
-					type="Active"
-					press=".onListItemPress">
+                                <!-- Seus VBoxes de dados ficam aqui -->
+                                <VBox
+                                    id="_IDGenVBox5"
+                                    class="sapUiSmallMarginEnd sapUiSmallMarginBottom"
+                                >
+                                    <layoutData>
+                                        <FlexItemData
+                                            id="_IDGenFlexItemData2"
+                                            growFactor="1"
+                                            shrinkFactor="1"
+                                        />
+                                    </layoutData>
 
-					<VBox id="_IDGenVBox4"
-						class="sapUiSmallMarginTop sapUiSmallMarginBottom sapUiSmallMarginBeginEnd">
-						
+                                    <ObjectIdentifier
+                                        id="_IDGenObjectIdentifier"
+                                        title="{mdlOcorrenciasFiltradas>Empregado}"
+                                        text="{mdlOcorrenciasFiltradas>NomeEmpregado}"
+                                    />
 
-<HBox
-    id="boxLinhaOcorrencia"
-    width="100%"
-    wrap="NoWrap"
-    alignItems="Start"
-    justifyContent="Start">
-
-    <!-- Área dos dados: esta parte pode quebrar linha -->
-    <HBox
-        id="boxDadosOcorrencia"
-        wrap="Wrap"
-        alignItems="Start"
-        alignContent="Start"
-        justifyContent="Start">
-
-        <layoutData>
-            <FlexItemData
-                growFactor="1"
-                shrinkFactor="1"
-                baseSize="0"
-                minWidth="0" />
-        </layoutData>
-
-        <!-- Seus VBoxes de dados ficam aqui -->
-        <VBox id="_IDGenVBox5" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
-            <layoutData>
-                <FlexItemData growFactor="1" shrinkFactor="1"  />
-            </layoutData>
-
-            <ObjectIdentifier
-                id="_IDGenObjectIdentifier"
-                title="{mdlOcorrenciasFiltradas>Empregado}"
-                text="{mdlOcorrenciasFiltradas>NomeEmpregado}" />
-
-            <!-- <Text
+                                    <!-- <Text
                 id="_IDGenText"
                 text="{mdlOcorrenciasFiltradas>UnidadeOrganizacional} - {mdlOcorrenciasFiltradas>UnidOrgDescricao}" /> -->
-        </VBox>
+                                </VBox>
 
-        <VBox id="_IDGenVBox20" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
-            <layoutData>
-                <FlexItemData shrinkFactor="0" baseSize="8rem" />
-            </layoutData>
+                                <VBox
+                                    id="_IDGenVBox20"
+                                    class="sapUiSmallMarginEnd sapUiSmallMarginBottom"
+                                >
+                                    <layoutData>
+                                        <FlexItemData
+                                            id="_IDGenFlexItemData3"
+                                            shrinkFactor="0"
+                                            baseSize="8rem"
+                                        />
+                                    </layoutData>
 
-            <Label id="_IDGenLabel20" text="Status" />
-            <ObjectStatus
-                id="_IDGenObjectStatus"
-                text="{
-                    path: 'mdlOcorrenciasFiltradas>Status',
-                    formatter: '.formatter.statusText'
-                }"
-                icon="{
-                    path: 'mdlOcorrenciasFiltradas>Status',
-                    formatter: '.formatter.statusIcon'
-                }"
-                state="{
-                    path: 'mdlOcorrenciasFiltradas>Status',
-                    formatter: '.formatter.statusState'
-                }" />
-        </VBox>
+                                    <Label
+                                        id="_IDGenLabel20"
+                                        text="Status"
+                                    />
+                                    <ObjectStatus
+                                        id="_IDGenObjectStatus"
+                                        text="{
+											path: 'mdlOcorrenciasFiltradas>Status',
+											formatter: '.formatter.statusText'
+										}"
+                                        icon="{
+											path: 'mdlOcorrenciasFiltradas>Status',
+											formatter: '.formatter.statusIcon'
+										}"
+                                        state="{
+											path: 'mdlOcorrenciasFiltradas>Status',
+											formatter: '.formatter.statusState'
+										}"
+                                    />
+                                </VBox>
 
-        <VBox id="_IDGenVBox6" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
-            <layoutData>
-                <FlexItemData shrinkFactor="0" baseSize="6rem" />
-            </layoutData>
+                                <VBox
+                                    id="_IDGenVBox6"
+                                    class="sapUiSmallMarginEnd sapUiSmallMarginBottom"
+                                >
+                                    <layoutData>
+                                        <FlexItemData
+                                            id="_IDGenFlexItemData4"
+                                            shrinkFactor="0"
+                                            baseSize="6rem"
+                                        />
+                                    </layoutData>
 
-            <Label id="_IDGenLabel6" text="Data" />
-            <Text
-                id="_IDGenText1"
-                text="{
-                    path: 'mdlOcorrenciasFiltradas>Data',
-                    formatter: '.formatter.formatDateBR'
-                }" />
-        </VBox>
+                                    <Label
+                                        id="_IDGenLabel6"
+                                        text="Data"
+                                    />
+                                    <Text
+                                        id="_IDGenText1"
+                                        text="{
+											path: 'mdlOcorrenciasFiltradas>Data',
+											formatter: '.formatter.formatDateBR'
+										}"
+                                    />
+                                </VBox>
 
-							<VBox id="_IDGenVBox7" class="sapUiSmallMarginEnd">
-								<Label id="_IDGenLabel7" text="Início" />
-								<Text id="_IDGenInput"
-									width="3rem"
-									text="{
+                                <VBox
+                                    id="_IDGenVBox7"
+                                    class="sapUiSmallMarginEnd"
+                                >
+                                    <Label
+                                        id="_IDGenLabel7"
+                                        text="Início"
+                                    />
+                                    <Text
+                                        id="_IDGenInput"
+                                        width="3rem"
+                                        text="{
 										path: 'mdlOcorrenciasFiltradas>HoraInicio',
 										formatter: '.formatter.formatTimeFromMs'
 									}"
-									/>
-							</VBox>
+                                    />
+                                </VBox>
 
-							<VBox id="_IDGenVBox8" class="sapUiSmallMarginEnd">
-								<Label id="_IDGenLabel8" text="Fim" />
-								<Text id="_IDGenInput1"
-									width="3rem"
-									text="{
+                                <VBox
+                                    id="_IDGenVBox8"
+                                    class="sapUiSmallMarginEnd"
+                                >
+                                    <Label
+                                        id="_IDGenLabel8"
+                                        text="Fim"
+                                    />
+                                    <Text
+                                        id="_IDGenInput1"
+                                        width="3rem"
+                                        text="{
 										path: 'mdlOcorrenciasFiltradas>HoraFim',
 										formatter: '.formatter.formatTimeFromMs'
 									}"
-									/>
-							</VBox>
+                                    />
+                                </VBox>
 
-							<VBox id="_IDGenVBox9" class="sapUiSmallMarginEnd">
-								<Label id="_IDGenLabel9" text="Diferença" />
-								<Text id="_IDGenText2"
-									text="{mdlOcorrenciasFiltradas>Diferenca}"
-									textAlign="Right" />
-							</VBox>
+                                <VBox
+                                    id="_IDGenVBox9"
+                                    class="sapUiSmallMarginEnd"
+                                >
+                                    <Label
+                                        id="_IDGenLabel9"
+                                        text="Diferença"
+                                    />
+                                    <Text
+                                        id="_IDGenText2"
+                                        text="{mdlOcorrenciasFiltradas>Diferenca}"
+                                        textAlign="Right"
+                                    />
+                                </VBox>
 
-							<VBox id="_IDGenVBox10" class="sapUiSmallMarginEnd">
-								<Label id="_IDGenLabel10" text="Tipo de Ocorrência" />
-								<Text id="_IDGenInput2"
-									width="9rem"
-									text="{mdlOcorrenciasFiltradas>TipoOcorrencia}"
-									/>
-							</VBox>
+                                <VBox
+                                    id="_IDGenVBox10"
+                                    class="sapUiSmallMarginEnd"
+                                >
+                                    <Label
+                                        id="_IDGenLabel10"
+                                        text="Tipo de Ocorrência"
+                                    />
+                                    <Text
+                                        id="_IDGenInput2"
+                                        width="9rem"
+                                        text="{mdlOcorrenciasFiltradas>TipoOcorrencia}"
+                                    />
+                                </VBox>
 
-							<VBox id="_IDGenVBox11" class="sapUiSmallMarginEnd">
-								<Label id="_IDGenLabel11" text="Justificativa" />
-								<Text id="_IDGenInput3"
-									width="18rem"
-									text="{mdlOcorrenciasFiltradas>JustificativaTexto}"
-									/>
+                                <VBox
+                                    id="_IDGenVBox11"
+                                    class="sapUiSmallMarginEnd"
+                                >
+                                    <Label
+                                        id="_IDGenLabel11"
+                                        text="Justificativa"
+                                    />
+                                    <Text
+                                        id="_IDGenInput3"
+                                        width="18rem"
+                                        text="{mdlOcorrenciasFiltradas>JustificativaTexto}"
+                                    />
+                                </VBox>
 
-							</VBox>
+                                <VBox
+                                    id="_IDGenVBox12"
+                                    class="sapUiSmallMarginTop"
+                                >
+                                    <Label
+                                        id="_IDGenLabel12"
+                                        text="Observação"
+                                    />
+                                    <Text
+                                        id="_IDGenInput4"
+                                        text="{mdlOcorrenciasFiltradas>Observacao}"
+                                        width="100%"
+                                    />
+                                </VBox>
+                            </HBox>
 
-							<VBox id="_IDGenVBox12" class="sapUiSmallMarginTop">
-								<Label id="_IDGenLabel12" text="Observação" />
-								<Text id="_IDGenInput4"
-									text="{mdlOcorrenciasFiltradas>Observacao}"
-									width="100%" />
-							</VBox>
+                            <!-- Área de ações: não participa da quebra -->
+                            <VBox
+                                id="boxAcoesLinha"
+                                class="sapUiTinyMarginBegin"
+                                alignItems="Center"
+                            >
+                                <layoutData>
+                                    <FlexItemData
+                                        id="_IDGenFlexItemData5"
+                                        growFactor="0"
+                                        shrinkFactor="0"
+                                        baseSize="3rem"
+                                    />
+                                </layoutData>
 
-    </HBox>
+                                <Button
+                                    id="_IDGenButton13"
+                                    icon="sap-icon://accept"
+                                    type="Transparent"
+                                    tooltip="Salvar"
+                                    press=".onSalvarLinha"
+                                />
 
-    <!-- Área de ações: não participa da quebra -->
-    <VBox
-        id="boxAcoesLinha"
-        class="sapUiTinyMarginBegin"
-        alignItems="Center">
+                                <Button
+                                    id="_IDGenButton14"
+                                    icon="sap-icon://decline"
+                                    type="Transparent"
+                                    tooltip="Cancelar"
+                                    press=".onCancelarLinha"
+                                />
 
-        <layoutData>
-            <FlexItemData
-                growFactor="0"
-                shrinkFactor="0"
-                baseSize="3rem" />
-        </layoutData>
+                                <Button
+                                    id="_IDGenButton9"
+                                    icon="sap-icon://attachment"
+                                    type="Transparent"
+                                    tooltip="Anexar"
+                                    press=".onAbrirFragmentTelaAnexo"
+                                />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </CustomListItem>
+            </List>
+        </f:content>
 
-        <Button
-            id="_IDGenButton13"
-            icon="sap-icon://accept"
-            type="Transparent"
-            tooltip="Salvar"
-            press=".onSalvarLinha" />
-
-        <Button
-            id="_IDGenButton14"
-            icon="sap-icon://decline"
-            type="Transparent"
-            tooltip="Cancelar"
-            press=".onCancelarLinha" />
-
-        <Button
-            id="_IDGenButton9"
-            icon="sap-icon://attachment"
-            type="Transparent"
-            tooltip="Anexar"
-            press=".onAbrirFragmentTelaAnexo" />
-    </VBox>
-
-</HBox>
-
-
-					</VBox>
-
-				</CustomListItem>
-
-			</List>
-   
-
-		</f:content>
-
-		<!-- DynamicPage Footer -->
-		<f:footer>
-			<OverflowToolbar id="_IDGenOverflowToolbar1">
-				<ToolbarSpacer id="_IDGenToolbarSpacer1"/>
-				<Button id="_IDGenButton" type="Accept" text="Accept"/>
-				<Button id="_IDGenButton1" type="Reject" text="Reject"/>
-			</OverflowToolbar>
-		</f:footer>
-	</f:DynamicPage>
+        <!-- DynamicPage Footer -->
+        <f:footer>
+            <OverflowToolbar id="_IDGenOverflowToolbar1">
+                <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                <Button
+                    id="_IDGenButton"
+                    type="Accept"
+                    text="Accept"
+                />
+                <Button
+                    id="_IDGenButton1"
+                    type="Reject"
+                    text="Reject"
+                />
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
 </mvc:View>
