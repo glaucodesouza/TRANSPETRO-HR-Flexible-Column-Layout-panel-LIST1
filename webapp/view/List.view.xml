@@ -169,6 +169,67 @@
 
         <!-- DynamicPage Content -->
         <f:content>
+<VBox id="_IDGenVBox3" width="100%">
+
+            <!-- Cabeçalho -->
+            <HBox id="_IDGenHBox1"
+                width="100%"
+                class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginTop sapUiTinyMarginBottom"
+                alignItems="Center">
+
+                <Text id="_IDGenText"
+                    text="Empregado"
+                    width="16rem"
+                    class="sapUiTinyMarginEnd sapMTitleStyle"/>
+
+                <Text id="_IDGenText3"
+                    text="Status"
+                    width="8rem"
+                    class="sapUiTinyMarginEnd sapMTitleStyle"/>
+
+                <Text id="_IDGenText10"
+                    text="Data"
+                    width="6rem"
+                    class="sapUiTinyMarginEnd sapMTitleStyle"/>
+
+                <Text id="_IDGenText11"
+                    text="Início"
+                    width="4rem"
+                    class="sapUiTinyMarginEnd sapMTitleStyle"/>
+
+                <Text id="_IDGenText12"
+                    text="Fim"
+                    width="4rem"
+                    class="sapUiTinyMarginEnd sapMTitleStyle"/>
+
+                <Text id="_IDGenText13"
+                    text="Diferença"
+                    width="6rem"
+                    class="sapUiTinyMarginEnd sapMTitleStyle"/>
+
+                <Text id="_IDGenText14"
+                    text="Tipo Ocorrência"
+                    width="10rem"
+                    class="sapUiTinyMarginEnd sapMTitleStyle"/>
+
+                <Text id="_IDGenText15"
+                    text="Justificativa"
+                    width="18rem"
+                    class="sapUiTinyMarginEnd sapMTitleStyle"/>
+
+                <Text id="_IDGenText16"
+                    text="Observação"
+                    width="12rem"
+                    class="sapMTitleStyle"/>
+
+            </HBox>
+
+            <Toolbar id="_IDGenToolbar" height="1px">
+                <ToolbarSpacer id="_IDGenToolbarSpacer"/>
+            </Toolbar>
+
+
+            <!-- LIST -->
             <List
                 id="listOcorrencias"
                 mode="MultiSelect"
@@ -256,10 +317,7 @@
                                         />
                                     </layoutData>
 
-                                    <Label
-                                        id="_IDGenLabel20"
-                                        text="Status"
-                                    />
+
                                     <ObjectStatus
                                         id="_IDGenObjectStatus"
                                         text="{
@@ -289,10 +347,7 @@
                                         />
                                     </layoutData>
 
-                                    <Label
-                                        id="_IDGenLabel6"
-                                        text="Data"
-                                    />
+
                                     <Text
                                         id="_IDGenText1"
                                         text="{
@@ -306,10 +361,7 @@
                                     id="_IDGenVBox7"
                                     class="sapUiSmallMarginEnd"
                                 >
-                                    <Label
-                                        id="_IDGenLabel7"
-                                        text="Início"
-                                    />
+
                                     <Text
                                         id="_IDGenInput"
                                         width="3rem"
@@ -324,10 +376,7 @@
                                     id="_IDGenVBox8"
                                     class="sapUiSmallMarginEnd"
                                 >
-                                    <Label
-                                        id="_IDGenLabel8"
-                                        text="Fim"
-                                    />
+
                                     <Text
                                         id="_IDGenInput1"
                                         width="3rem"
@@ -342,10 +391,7 @@
                                     id="_IDGenVBox9"
                                     class="sapUiSmallMarginEnd"
                                 >
-                                    <Label
-                                        id="_IDGenLabel9"
-                                        text="Diferença"
-                                    />
+
                                     <Text
                                         id="_IDGenText2"
                                         text="{mdlOcorrenciasFiltradas>Diferenca}"
@@ -357,10 +403,7 @@
                                     id="_IDGenVBox10"
                                     class="sapUiSmallMarginEnd"
                                 >
-                                    <Label
-                                        id="_IDGenLabel10"
-                                        text="Tipo de Ocorrência"
-                                    />
+
                                     <Text
                                         id="_IDGenInput2"
                                         width="9rem"
@@ -372,13 +415,10 @@
                                     id="_IDGenVBox11"
                                     class="sapUiSmallMarginEnd"
                                 >
-                                    <Label
-                                        id="_IDGenLabel11"
-                                        text="Justificativa"
-                                    />
+
                                     <Text
                                         id="_IDGenInput3"
-                                        width="18rem"
+                                        width="16rem"
                                         text="{mdlOcorrenciasFiltradas>JustificativaTexto}"
                                     />
                                 </VBox>
@@ -387,10 +427,7 @@
                                     id="_IDGenVBox12"
                                     class="sapUiSmallMarginTop"
                                 >
-                                    <Label
-                                        id="_IDGenLabel12"
-                                        text="Observação"
-                                    />
+
                                     <Text
                                         id="_IDGenInput4"
                                         text="{mdlOcorrenciasFiltradas>Observacao}"
@@ -400,7 +437,7 @@
                             </HBox>
 
                             <!-- Área de ações: não participa da quebra -->
-                            <VBox
+                            <HBox
                                 id="boxAcoesLinha"
                                 class="sapUiTinyMarginBegin"
                                 alignItems="Center"
@@ -437,11 +474,12 @@
                                     tooltip="Anexar"
                                     press=".onAbrirFragmentTelaAnexo"
                                 />
-                            </VBox>
+                            </HBox>
                         </HBox>
                     </VBox>
                 </CustomListItem>
             </List>
+            </VBox>
         </f:content>
 
         <!-- DynamicPage Footer -->
